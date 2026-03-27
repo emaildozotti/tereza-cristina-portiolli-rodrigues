@@ -1,116 +1,283 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+// DECISÃO CRIATIVA: Crossfade animado com auto-advance 6s cria tensão
+// narrativa — o leitor quer ver o próximo depoimento. Barras indicadoras (não
+// dots) em caramelo comunicam progresso. Aspa gigante opacity 0.08 em display
+// serif é decorativa sem competir. Fundo Petróleo + hachura diagonal para
+// consistência com seções dark. Pause on hover para controle do leitor.
+import { useState, useEffect, useRef } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { FadeIn } from './FadeIn'
 
-const testimonials = [
+interface Testimonial {
+  name: string
+  description: string
+  text: string
+}
+
+const testimonials: Testimonial[] = [
   {
-    id: 1,
-    nome: 'Nome do paciente',
-    descricao: 'Profissão, cidade',
-    depoimento: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
+    name: 'Nome do paciente',
+    description: 'Profissão, cidade',
+    text: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
   },
   {
-    id: 2,
-    nome: 'Nome do paciente',
-    descricao: 'Profissão, cidade',
-    depoimento: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
+    name: 'Nome do paciente',
+    description: 'Profissão, cidade',
+    text: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
   },
   {
-    id: 3,
-    nome: 'Nome do paciente',
-    descricao: 'Profissão, cidade',
-    depoimento: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
+    name: 'Nome do paciente',
+    description: 'Profissão, cidade',
+    text: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
   },
 ]
 
-export default function Testimonials() {
+export const Testimonials = () => {
   const [current, setCurrent] = useState(0)
+  const [isHovered, setIsHovered] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const prev = () => setCurrent((c) => (c === 0 ? testimonials.length - 1 : c - 1))
-  const next = () => setCurrent((c) => (c === testimonials.length - 1 ? 0 : c + 1))
+  const startTimer = () => {
+    timerRef.current = setInterval(() => {
+      setCurrent(prev => (prev + 1) % testimonials.length)
+    }, 6000)
+  }
 
-  const t = testimonials[current]
+  useEffect(() => {
+    if (!isHovered) startTimer()
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [isHovered])
+
+  const goTo = (idx: number) => {
+    if (timerRef.current) clearInterval(timerRef.current)
+    setCurrent(idx)
+    if (!isHovered) startTimer()
+  }
 
   return (
-    <section className="section-padding-lg" style={{ background: '#F3EDE4' }}>
+    <section
+      id="testimonials"
+      style={{
+        backgroundColor: '#1A5C6B',
+        backgroundImage:
+          'repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 12px)',
+      }}
+      className="section-padding-lg"
+      onMouseEnter={() => {
+        setIsHovered(true)
+        if (timerRef.current) clearInterval(timerRef.current)
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false)
+      }}
+    >
       <div className="container-ultra">
-        <FadeIn>
-          <h2 className="font-display text-heading font-semibold text-3xl md:text-[2.5rem] md:leading-[1.2] text-center mb-16">
-            Resultados que o corpo <span className="text-primary">confirma</span>
-          </h2>
-        </FadeIn>
-
-        <FadeIn delay={0.15}>
-          <div className="relative max-w-2xl mx-auto text-center">
-            {/* Decorative quote */}
+        {/* Header */}
+        <FadeIn direction="up" delay={0}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
             <span
-              className="absolute -top-8 left-1/2 -translate-x-1/2 font-display text-primary/20 select-none pointer-events-none"
-              style={{ fontSize: '120px', lineHeight: '1' }}
+              className="eyebrow-ultra"
+              style={{ color: '#B5813A', display: 'block', marginBottom: '1rem' }}
             >
-              "
+              DEPOIMENTOS
             </span>
-
-            <div className="min-h-[200px] flex items-center justify-center">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={t.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  className="px-4"
-                >
-                  <p className="font-sub italic text-text-main text-lg md:text-xl leading-relaxed mb-6">
-                    "{t.depoimento}"
-                  </p>
-                  <p className="text-heading font-bold text-sm">{t.nome}</p>
-                  <p className="text-text-main/60 text-sm">{t.descricao}</p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex items-center justify-center gap-6 mt-8">
-              <button
-                onClick={prev}
-                className="w-10 h-10 rounded-full border border-primary/30 text-primary flex items-center justify-center hover:bg-primary hover:text-off-white transition-all duration-300"
-                aria-label="Depoimento anterior"
-              >
-                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M10 2L4 8l6 6" />
-                </svg>
-              </button>
-
-              <div className="flex gap-2">
-                {testimonials.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrent(i)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      i === current ? 'bg-primary w-6' : 'bg-primary/30'
-                    }`}
-                    aria-label={`Depoimento ${i + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={next}
-                className="w-10 h-10 rounded-full border border-primary/30 text-primary flex items-center justify-center hover:bg-primary hover:text-off-white transition-all duration-300"
-                aria-label="Próximo depoimento"
-              >
-                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M6 2l6 6-6 6" />
-                </svg>
-              </button>
+            <h2
+              style={{
+                fontFamily: 'Fraunces, serif',
+                fontSize: 'clamp(1.75rem, 3.5vw, 2.5rem)',
+                fontWeight: 600,
+                color: '#F9F6F2',
+                lineHeight: 1.2,
+              }}
+            >
+              Resultados que o corpo{' '}
+              <em style={{ color: '#B5813A', fontStyle: 'italic' }}>
+                confirma
+              </em>
+            </h2>
+            <div
+              className="circuit-divider"
+              style={{ maxWidth: '300px', margin: '1.5rem auto 0' }}
+            >
+              <div className="circuit-node" />
+              <div className="circuit-node" />
+              <div className="circuit-node" />
             </div>
           </div>
         </FadeIn>
 
-        <FadeIn delay={0.3}>
-          <p className="text-center mt-14 font-sub italic text-text-main/60 text-sm">
-            Mas talvez uma parte de você ainda tenha dúvidas. Normal.
-          </p>
+        {/* Carousel */}
+        <FadeIn direction="up" delay={0.1}>
+          <div
+            style={{
+              maxWidth: '720px',
+              margin: '0 auto',
+              position: 'relative',
+            }}
+          >
+            {/* Giant quote mark */}
+            <div
+              style={{
+                position: 'absolute',
+                top: '-1rem',
+                left: '-1rem',
+                fontFamily: 'Fraunces, serif',
+                fontSize: '10rem',
+                lineHeight: 1,
+                color: '#F9F6F2',
+                opacity: 0.08,
+                pointerEvents: 'none',
+                userSelect: 'none',
+                zIndex: 0,
+              }}
+            >
+              &ldquo;
+            </div>
+
+            {/* Card */}
+            <div
+              style={{
+                position: 'relative',
+                minHeight: '280px',
+                zIndex: 1,
+              }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  style={{
+                    backgroundColor: 'rgba(28, 43, 53, 0.35)',
+                    border: '1px solid rgba(249,246,242,0.1)',
+                    borderRadius: '16px 4px 16px 4px',
+                    padding: '2.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1.25rem',
+                  }}
+                >
+                  {/* Text */}
+                  <p
+                    style={{
+                      fontFamily: 'Fraunces, serif',
+                      fontSize: '1.05rem',
+                      fontStyle: 'italic',
+                      fontWeight: 300,
+                      color: '#F9F6F2',
+                      opacity: 0.9,
+                      lineHeight: 1.85,
+                    }}
+                  >
+                    &ldquo;{testimonials[current].text}&rdquo;
+                  </p>
+
+                  {/* Author */}
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.75rem',
+                      paddingTop: '0.5rem',
+                      borderTop: '1px solid rgba(249,246,242,0.1)',
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: '2rem',
+                        height: '2px',
+                        backgroundColor: '#B5813A',
+                        opacity: 0.6,
+                      }}
+                    />
+                    <div>
+                      <span
+                        style={{
+                          fontFamily: 'Lato, sans-serif',
+                          fontSize: '0.75rem',
+                          fontWeight: 700,
+                          color: '#F9F6F2',
+                          opacity: 0.7,
+                          letterSpacing: '0.06em',
+                          display: 'block',
+                        }}
+                      >
+                        {testimonials[current].name}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: 'Lato, sans-serif',
+                          fontSize: '0.65rem',
+                          color: '#F9F6F2',
+                          opacity: 0.45,
+                          letterSpacing: '0.04em',
+                        }}
+                      >
+                        {testimonials[current].description}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Progress bars */}
+            <div
+              style={{
+                display: 'flex',
+                gap: '0.5rem',
+                justifyContent: 'center',
+                marginTop: '1.75rem',
+              }}
+            >
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => goTo(i)}
+                  style={{
+                    width: i === current ? '28px' : '8px',
+                    height: '2px',
+                    borderRadius: '1px',
+                    backgroundColor: i === current ? '#B5813A' : 'rgba(249,246,242,0.25)',
+                    border: 'none',
+                    cursor: 'pointer',
+                    padding: 0,
+                    transition: 'width 0.3s ease, background-color 0.3s ease',
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </FadeIn>
+
+        {/* Transition pull */}
+        <FadeIn direction="up" delay={0.3}>
+          <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+            <div
+              className="circuit-divider"
+              style={{ maxWidth: '400px', margin: '0 auto 1.5rem' }}
+            >
+              <div className="circuit-node" />
+              <div className="circuit-node" />
+              <div className="circuit-node" />
+            </div>
+            <p
+              style={{
+                fontFamily: 'Fraunces, serif',
+                fontSize: '1rem',
+                fontStyle: 'italic',
+                fontWeight: 300,
+                color: '#F9F6F2',
+                opacity: 0.6,
+                lineHeight: 1.8,
+              }}
+            >
+              Mas talvez uma parte de você ainda tenha dúvidas. Normal.
+            </p>
+          </div>
         </FadeIn>
       </div>
     </section>

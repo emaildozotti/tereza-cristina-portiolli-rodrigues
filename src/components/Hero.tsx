@@ -1,15 +1,58 @@
+// DECISÃO CRIATIVA: Split assimétrico 55/45 com aurora de 3 blobs em cores distintas
+// (petróleo/caramelo/creme) sobre fundo Grafite Farmacêutico + hachura diagonal.
+// Callout em caramelo ancora a dor do público antes do H1 em Fraunces display.
+// Circuit divider (signature) entre H1 e subtítulo cria pausa visual técnica.
+// Dois CTAs assimétricos: btn-shimmer sólido + btn-shimmer-light outline.
+// Badge "Farmacêutica + TFT" flutua sobre a foto como credential de autoridade.
+// Mobile: foto primeiro (order -1) para impacto imediato.
 import { useState, useEffect } from 'react'
+import { motion } from 'motion/react'
 import { FadeIn } from './FadeIn'
 
-const ArcSvg = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 48 32" fill="none" stroke="#B5813A" strokeWidth="2.5" strokeLinecap="round" className={className}>
-    <path d="M8 24 Q24 4 40 24" />
-    <path d="M13 27 Q24 11 35 27" />
-    <path d="M18 30 Q24 18 30 30" />
-  </svg>
+const WA_LINK = 'https://wa.me/5585992729289?text=Ol%C3%A1%20Tereza%2C%20vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20a%20sess%C3%A3o%20de%20diagn%C3%B3stico.'
+
+const PhotoFallback = () => (
+  <div
+    style={{
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(135deg, #1A5C6B 0%, #0F3D48 50%, #1C2B35 100%)',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '0.5rem',
+    }}
+  >
+    <span
+      style={{
+        fontFamily: 'Fraunces, serif',
+        fontSize: '4rem',
+        color: '#F9F6F2',
+        opacity: 0.9,
+        lineHeight: 1,
+        letterSpacing: '-0.02em',
+      }}
+    >
+      TC
+    </span>
+    <span
+      style={{
+        fontFamily: 'Lato, sans-serif',
+        fontSize: '0.65rem',
+        fontWeight: 600,
+        letterSpacing: '0.18em',
+        textTransform: 'uppercase',
+        color: '#B5813A',
+        opacity: 0.7,
+      }}
+    >
+      Tereza Cristina
+    </span>
+  </div>
 )
 
-export default function Hero() {
+export const Hero = () => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -18,133 +61,327 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const scrollToPain = () => {
-    document.getElementById('pain-points')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
     <>
       {/* Desktop sticky header */}
       <header
-        className={`hidden md:flex fixed top-0 left-0 right-0 z-50 items-center justify-between px-8 py-4 transition-all duration-500 ${
-          scrolled ? 'bg-dark/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-        }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0.75rem 2rem',
+          transition: 'all 0.5s ease',
+          backgroundColor: scrolled ? 'rgba(28,43,53,0.95)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(12px)' : 'none',
+          boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.15)' : 'none',
+        }}
+        className="sticky-header"
       >
-        <span className="font-display text-lg font-semibold text-off-white tracking-wide">
+        <span
+          style={{
+            fontFamily: 'Fraunces, serif',
+            fontSize: '1.1rem',
+            fontWeight: 600,
+            color: '#F9F6F2',
+            letterSpacing: '0.02em',
+          }}
+        >
           Tereza Cristina
         </span>
-        <a
-          href="https://wa.me/5585992729289?text=Ol%C3%A1%20Tereza%2C%20vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20a%20sess%C3%A3o%20de%20diagn%C3%B3stico."
+        <motion.a
+          href={WA_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-shimmer bg-primary text-off-white text-sm font-bold tracking-wider rounded-md hover:bg-primary-dark hover:shadow-[0_8px_24px_rgba(26,92,107,0.35)] transition-all duration-300"
-          style={{ padding: '0.625rem 1.5rem' }}
+          className="btn-shimmer"
+          style={{
+            backgroundColor: '#1A5C6B',
+            color: '#F9F6F2',
+            padding: '0.5rem 1.25rem',
+            borderRadius: '8px 2px 8px 2px',
+            border: 'none',
+            fontFamily: 'Lato, sans-serif',
+            fontSize: '0.8rem',
+            fontWeight: 700,
+            letterSpacing: '0.04em',
+            textDecoration: 'none',
+            display: 'inline-block',
+          }}
+          whileHover={{ backgroundColor: '#0F3D48', scale: 1.02 }}
+          whileTap={{ scale: 0.97 }}
         >
           Agendar sessão
-        </a>
+        </motion.a>
       </header>
 
-      <section className="relative min-h-screen bg-dark overflow-hidden flex items-center">
-        {/* Aurora blobs */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div
-            className="absolute -top-20 -right-20 rounded-full mix-blend-screen blur-3xl"
-            style={{
-              width: '55vw', height: '55vw',
-              background: 'radial-gradient(circle, rgba(26,92,107,0.40) 0%, transparent 70%)',
-              animation: 'aurora-1 18s ease-in-out infinite',
-            }}
-          />
-          <div
-            className="absolute -bottom-20 -left-20 rounded-full mix-blend-screen blur-3xl"
-            style={{
-              width: '40vw', height: '40vw',
-              background: 'radial-gradient(circle, rgba(181,129,58,0.28) 0%, transparent 70%)',
-              animation: 'aurora-2 22s ease-in-out infinite',
-            }}
-          />
-          <div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full mix-blend-screen blur-3xl"
-            style={{
-              width: '30vw', height: '30vw',
-              background: 'radial-gradient(circle, rgba(249,246,242,0.18) 0%, transparent 70%)',
-              animation: 'aurora-3 15s ease-in-out infinite',
-            }}
-          />
-        </div>
+      <section
+        id="hero"
+        style={{
+          backgroundColor: '#1C2B35',
+          backgroundImage:
+            'repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 12px)',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        {/* Aurora blobs — 3 cores distintas com opacity pulsante */}
+        <div
+          className="blur-orb"
+          style={{
+            position: 'absolute',
+            top: '10%',
+            right: '-5%',
+            width: '55vw',
+            height: '55vw',
+            background: 'radial-gradient(circle, rgba(26,92,107,0.40) 0%, transparent 70%)',
+            animation: 'aurora-1 18s ease-in-out infinite',
+          }}
+        />
+        <div
+          className="blur-orb"
+          style={{
+            position: 'absolute',
+            bottom: '5%',
+            left: '-8%',
+            width: '40vw',
+            height: '40vw',
+            background: 'radial-gradient(circle, rgba(181,129,58,0.28) 0%, transparent 70%)',
+            animation: 'aurora-2 22s ease-in-out infinite',
+          }}
+        />
+        <div
+          className="blur-orb"
+          style={{
+            position: 'absolute',
+            top: '40%',
+            left: '40%',
+            width: '30vw',
+            height: '30vw',
+            background: 'radial-gradient(circle, rgba(249,246,242,0.18) 0%, transparent 70%)',
+            animation: 'aurora-3 26s ease-in-out infinite',
+          }}
+        />
 
-        <div className="container-ultra relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center py-32 md:py-40">
-          {/* Copy side */}
-          <div className="order-2 lg:order-1">
-            <FadeIn delay={0}>
-              <div className="flex items-center gap-2 mb-6">
-                <ArcSvg className="w-5 h-3.5" />
-                <span className="text-secondary text-xs font-bold uppercase tracking-[0.12em]">
+        {/* Content */}
+        <div
+          className="container-ultra section-padding-lg"
+          style={{ position: 'relative', zIndex: 1, width: '100%' }}
+        >
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'clamp(280px, 55%, 600px) 1fr',
+              gap: '4rem',
+              alignItems: 'center',
+            }}
+            className="hero-grid"
+          >
+            {/* Text column */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+              {/* Callout eyebrow */}
+              <FadeIn direction="left" delay={0}>
+                <span className="eyebrow-ultra" style={{ opacity: 0.8 }}>
                   Para quem está exausta de remédio e sem melhora real
                 </span>
-              </div>
-            </FadeIn>
+              </FadeIn>
 
-            <FadeIn delay={0.15}>
-              <h1 className="font-display text-off-white font-bold leading-[1.15] text-4xl md:text-5xl lg:text-[3.75rem] lg:leading-[1.1] mb-6">
-                O seu corpo tem os <span className="text-primary">disjuntores certos</span>. Só precisa religar.
-              </h1>
-            </FadeIn>
-
-            <FadeIn delay={0.30}>
-              <p className="text-off-white/80 text-base lg:text-[1.0625rem] leading-relaxed mb-8 max-w-lg">
-                TFT: a abordagem que trabalha nos meridianos do corpo para desativar os alarmes da ansiedade, do burnout e da dor que nenhum exame explica. Com base científica, resultado mensurável e acolhimento de quem entende cada molécula do remédio que você toma.
-              </p>
-            </FadeIn>
-
-            <FadeIn delay={0.45}>
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <a
-                  href="https://wa.me/5585992729289?text=Ol%C3%A1%20Tereza%2C%20vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20a%20sess%C3%A3o%20de%20diagn%C3%B3stico."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-shimmer bg-primary text-off-white font-bold text-[0.9375rem] tracking-[0.04em] rounded-md hover:bg-primary-dark hover:shadow-[0_8px_24px_rgba(26,92,107,0.35)] transition-all duration-300"
+              {/* H1 */}
+              <FadeIn direction="left" delay={0.15}>
+                <h1
+                  style={{
+                    fontFamily: 'Fraunces, serif',
+                    fontSize: 'clamp(2.25rem, 4vw, 3.75rem)',
+                    fontWeight: 700,
+                    color: '#F9F6F2',
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.01em',
+                  }}
                 >
-                  Quero agendar minha sessão de diagnóstico
-                </a>
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-secondary text-xs font-bold tracking-wide"
-                  style={{ background: 'rgba(181,129,58,0.18)', border: '1px solid rgba(181,129,58,0.4)' }}
+                  O seu corpo tem os{' '}
+                  <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
+                    disjuntores certos
+                  </em>
+                  . Só precisa religar.
+                </h1>
+              </FadeIn>
+
+              {/* Circuit divider */}
+              <FadeIn direction="left" delay={0.25}>
+                <div className="circuit-divider" style={{ maxWidth: '280px' }}>
+                  <div className="circuit-node" />
+                  <div className="circuit-node" />
+                  <div className="circuit-node" />
+                </div>
+              </FadeIn>
+
+              {/* Subtitle */}
+              <FadeIn direction="left" delay={0.30}>
+                <p
+                  style={{
+                    fontFamily: 'Fraunces, serif',
+                    fontSize: 'clamp(1rem, 1.8vw, 1.2rem)',
+                    fontWeight: 300,
+                    color: '#F9F6F2',
+                    opacity: 0.75,
+                    fontStyle: 'italic',
+                    lineHeight: 1.7,
+                  }}
                 >
-                  Farmacêutica + TFT
-                </span>
+                  TFT: a abordagem que trabalha nos meridianos do corpo para desativar os alarmes da ansiedade, do burnout e da dor que nenhum exame explica. Com base científica, resultado mensurável e acolhimento de quem entende cada molécula do remédio que você toma.
+                </p>
+              </FadeIn>
+
+              {/* CTAs */}
+              <FadeIn direction="left" delay={0.45}>
+                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginTop: '0.5rem' }}>
+                  <motion.a
+                    href={WA_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-shimmer"
+                    style={{
+                      backgroundColor: '#1A5C6B',
+                      color: '#F9F6F2',
+                      padding: '0.875rem 2rem',
+                      borderRadius: '8px 2px 8px 2px',
+                      border: 'none',
+                      fontFamily: 'Lato, sans-serif',
+                      fontSize: '0.9375rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em',
+                      textDecoration: 'none',
+                      display: 'inline-block',
+                    }}
+                    whileHover={{ backgroundColor: '#0F3D48', scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    Quero agendar minha sessão de diagnóstico
+                  </motion.a>
+
+                  <motion.button
+                    onClick={() => {
+                      const el = document.getElementById('pain-points')
+                      if (el) el.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                    className="btn-shimmer-light"
+                    style={{
+                      padding: '0.875rem 1.75rem',
+                      borderRadius: '2px 8px 2px 8px',
+                      fontFamily: 'Lato, sans-serif',
+                      fontSize: '0.9375rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.04em',
+                    }}
+                    whileHover={{ backgroundColor: 'rgba(26,92,107,0.08)', scale: 1.02 }}
+                    whileTap={{ scale: 0.97 }}
+                  >
+                    Entenda como funciona
+                  </motion.button>
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Photo column */}
+            <FadeIn direction="right" delay={0.2}>
+              <div style={{ position: 'relative' }}>
+                {/* Decorative frame behind photo */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: '-12px',
+                    border: '1px solid rgba(181,129,58,0.25)',
+                    borderRadius: '4px 20px 4px 20px',
+                    transform: 'rotate(-3deg)',
+                    zIndex: 0,
+                  }}
+                />
+                {/* Photo container */}
+                <div
+                  style={{
+                    position: 'relative',
+                    zIndex: 1,
+                    borderRadius: '16px 4px 16px 4px',
+                    overflow: 'hidden',
+                    aspectRatio: '3/4',
+                    maxHeight: '560px',
+                    backgroundColor: '#0F3D48',
+                  }}
+                  className="client-photo"
+                >
+                  <PhotoFallback />
+                  <div className="image-overlay" />
+                </div>
+                {/* Credential badge */}
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '-1.5rem',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    backgroundColor: 'rgba(26,92,107,0.9)',
+                    backdropFilter: 'blur(12px)',
+                    border: '1px solid rgba(181,129,58,0.3)',
+                    borderRadius: '4px 12px 4px 12px',
+                    padding: '0.5rem 1.25rem',
+                    textAlign: 'center',
+                    whiteSpace: 'nowrap',
+                    zIndex: 2,
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: 'Lato, sans-serif',
+                      fontSize: '0.6rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: '#B5813A',
+                      opacity: 0.9,
+                      marginBottom: '0.1rem',
+                    }}
+                  >
+                    Formação Dupla
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: 'Fraunces, serif',
+                      fontSize: '0.85rem',
+                      color: '#F9F6F2',
+                      opacity: 0.95,
+                    }}
+                  >
+                    Farmacêutica + TFT
+                  </p>
+                </div>
               </div>
             </FadeIn>
           </div>
-
-          {/* Photo side */}
-          <FadeIn delay={0.15} className="order-1 lg:order-2 flex justify-center lg:justify-end">
-            <div className="relative">
-              <img
-                src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=800&h=1000&fit=crop&q=80"
-                alt="Tereza Cristina Portiolli Rodrigues"
-                className="relative z-10 w-64 md:w-72 lg:w-80 rounded-[1.25rem] object-cover aspect-[4/5]"
-                style={{
-                  border: '1px solid rgba(26,92,107,0.5)',
-                  filter: 'drop-shadow(0 20px 60px rgba(26,92,107,0.18))',
-                }}
-              />
-              <ArcSvg className="absolute -bottom-4 -right-4 w-10 h-7 z-20 opacity-80" />
-            </div>
-          </FadeIn>
         </div>
 
-        {/* Scroll indicator - desktop only */}
-        <button
-          onClick={scrollToPain}
-          className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-off-white/50 hover:text-off-white/80 transition-colors cursor-pointer"
-          aria-label="Rolar para baixo"
-        >
-          <span className="text-xs tracking-widest uppercase">Rolar</span>
-          <svg width="16" height="24" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <path d="M8 4v16m0 0l-4-4m4 4l4-4" />
-          </svg>
-        </button>
+        {/* Responsive overrides */}
+        <style>{`
+          @media (max-width: 768px) {
+            .hero-grid {
+              grid-template-columns: 1fr !important;
+              gap: 3rem !important;
+            }
+            .hero-grid > div:last-child {
+              order: -1;
+              max-width: 320px;
+              margin: 0 auto;
+            }
+            .sticky-header {
+              display: none !important;
+            }
+          }
+        `}</style>
       </section>
     </>
   )

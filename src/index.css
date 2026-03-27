@@ -1,65 +1,276 @@
+/* ============================================================
+   TEREZA CRISTINA PORTIOLLI RODRIGUES — LP v2
+   Pipeline v3.3 — Identidade Petróleo Meridiano + Caramelo Neurológico
+   ============================================================ */
+
+/* 1. GLOBAL RESETS PREMIUM */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1.7;
+  font-weight: 300;
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+::selection {
+  background: #1A5C6B;
+  color: #F9F6F2;
+}
+
+/* 2. TAILWIND IMPORT */
 @import "tailwindcss";
 
+/* 3. DESIGN TOKENS */
 @theme {
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
-  --font-sub: "Fraunces", ui-serif, Georgia, serif;
-  --font-sans: "Lato", ui-sans-serif, system-ui, sans-serif;
-
+  /* Cores — Identidade Tereza */
   --color-primary: #1A5C6B;
   --color-primary-dark: #0F3D48;
   --color-secondary: #B5813A;
   --color-dark: #1C2B35;
   --color-bg-warm: #F3EDE4;
   --color-bg-light: #EBF4F6;
+  --color-off-white: #F9F6F2;
   --color-text-main: #374149;
   --color-heading: #1C2B35;
-  --color-off-white: #F9F6F2;
+
+  /* Tipografia */
+  --font-display: 'Fraunces', serif;
+  --font-sans: 'Lato', sans-serif;
+  --font-sub: 'Fraunces', serif;
+
+  /* Tamanhos */
+  --container-width: 1120px;
+  --section-py: 4rem;
+  --section-py-lg: 6.5rem;
 }
 
-body {
+/* 4. CLASSES BASE */
+.eyebrow-ultra {
   font-family: var(--font-sans);
-  color: var(--color-text-main);
-  background: var(--color-off-white);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  opacity: 0.75;
 }
 
-::selection {
-  background: var(--color-primary);
-  color: var(--color-off-white);
+.container-ultra {
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 3px; }
-* { scrollbar-width: thin; scrollbar-color: var(--color-primary) transparent; }
+.section-padding {
+  padding-top: var(--section-py);
+  padding-bottom: var(--section-py);
+}
 
-@keyframes shimmer-sweep {
-  0% { transform: translateX(-150%) skewX(-20deg); }
-  100% { transform: translateX(250%) skewX(-20deg); }
+.section-padding-lg {
+  padding-top: var(--section-py-lg);
+  padding-bottom: var(--section-py-lg);
 }
-.btn-shimmer {
-  position: relative; overflow: hidden;
-  padding: 1.25rem 2.5rem;
-  display: inline-flex; align-items: center; justify-content: center;
+
+/* 5. HELPER CLASSES */
+.blur-orb {
+  filter: blur(120px);
+  pointer-events: none;
+  user-select: none;
 }
-.btn-shimmer::after {
-  content: ''; position: absolute; inset: 0; width: 35%;
-  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%);
-  transform: translateX(-150%) skewX(-20deg);
-  animation: shimmer-sweep 2.8s ease-in-out infinite;
+
+.line-separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(181, 129, 58, 0.3) 50%, transparent 100%);
+  border: none;
+}
+
+.client-photo {
+  filter: contrast(1.05) saturate(0.9) brightness(0.97);
+  transition: filter 0.4s ease;
+}
+
+.client-photo:hover {
+  filter: contrast(1.08) saturate(1.0) brightness(1.0);
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 60%,
+    rgba(28, 43, 53, 0.6) 100%
+  );
+  border-radius: inherit;
   pointer-events: none;
 }
 
-@keyframes aurora-1 { 0%,100% { transform: translate(0,0) scale(1) rotate(0deg); } 33% { transform: translate(40px,-30px) scale(1.15) rotate(5deg); } 66% { transform: translate(-20px,25px) scale(0.92) rotate(-3deg); } }
-@keyframes aurora-2 { 0%,100% { transform: translate(0,0) scale(1.1) rotate(0deg); } 25% { transform: translate(-50px,30px) scale(0.9) rotate(8deg); } 75% { transform: translate(35px,-40px) scale(1.2) rotate(-6deg); } }
-@keyframes aurora-3 { 0%,100% { transform: translate(0,0) scale(0.95); } 50% { transform: translate(20px,20px) scale(1.05); } }
-
-.section-padding { padding-top: 6rem; padding-bottom: 6rem; }
-.section-padding-lg { padding-top: 10rem; padding-bottom: 10rem; }
-@media (min-width: 1024px) {
-  .section-padding { padding-top: 8rem; padding-bottom: 8rem; }
-  .section-padding-lg { padding-top: 14rem; padding-bottom: 14rem; }
+/* 6. SIGNATURE ELEMENT — CIRCUIT DIVIDER (exclusivo Tereza) */
+.circuit-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
-.container-ultra { max-width: 960px; margin-left: auto; margin-right: auto; padding-left: 1.5rem; padding-right: 1.5rem; }
-.eyebrow-ultra { font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; font-weight: 400; }
+
+.circuit-divider::before,
+.circuit-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #B5813A;
+  opacity: 0.5;
+}
+
+.circuit-node {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1.5px solid #B5813A;
+  background: transparent;
+  margin: 0 14px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.circuit-node::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #B5813A;
+}
+
+/* 7. SCROLLBAR */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-secondary);
+}
+
+/* 8. AURORA KEYFRAMES — OPACITY PULSANTE */
+@keyframes aurora-1 {
+  0%   { transform: translate(0%, 0%) scale(1);    opacity: 0.40; }
+  25%  { transform: translate(8%, -12%) scale(1.1); opacity: 0.55; }
+  50%  { transform: translate(15%, 5%) scale(0.95); opacity: 0.30; }
+  75%  { transform: translate(-5%, 10%) scale(1.05); opacity: 0.50; }
+  100% { transform: translate(0%, 0%) scale(1);    opacity: 0.40; }
+}
+
+@keyframes aurora-2 {
+  0%   { transform: translate(0%, 0%) scale(1);    opacity: 0.28; }
+  25%  { transform: translate(-10%, 8%) scale(1.08); opacity: 0.42; }
+  50%  { transform: translate(12%, -8%) scale(1.12); opacity: 0.20; }
+  75%  { transform: translate(4%, 15%) scale(0.92);  opacity: 0.38; }
+  100% { transform: translate(0%, 0%) scale(1);    opacity: 0.28; }
+}
+
+@keyframes aurora-3 {
+  0%   { transform: translate(0%, 0%) scale(1);     opacity: 0.18; }
+  25%  { transform: translate(12%, 10%) scale(0.9);  opacity: 0.30; }
+  50%  { transform: translate(-8%, -10%) scale(1.1); opacity: 0.14; }
+  75%  { transform: translate(-15%, 5%) scale(1.05); opacity: 0.25; }
+  100% { transform: translate(0%, 0%) scale(1);     opacity: 0.18; }
+}
+
+/* 9. BTN-SHIMMER (solid — 4s cycle, 2s delay) */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.15s ease;
+}
+
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: shimmer-sweep 4s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+/* 10. BTN-SHIMMER-LIGHT (outline com shimmer sutil) */
+.btn-shimmer-light {
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.15s ease;
+}
+
+.btn-shimmer-light::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(26, 92, 107, 0.12) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: shimmer-sweep 4s ease-in-out 2s infinite;
+  pointer-events: none;
+}
+
+/* 11. SHIMMER KEYFRAMES */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(350%) skewX(-20deg); }
+}

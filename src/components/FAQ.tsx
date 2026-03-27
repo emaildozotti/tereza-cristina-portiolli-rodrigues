@@ -1,6 +1,14 @@
+// DECISÃO CRIATIVA: Sticky sidebar emocional segura o leitor enquanto ele
+// navega nas perguntas — a pergunta "continua presente" como âncora psicológica.
+// Accordion com AnimatePresence tem abertura suave. CTA intermediário
+// btn-shimmer-light antecipa a decisão antes do footer. Fundo off-white
+// alterna com Petróleo anterior, criando respiração visual. Respostas em
+// Fraunces itálico conferem tom de autoridade técnica acolhedora.
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { FadeIn } from './FadeIn'
+
+const WA_LINK = 'https://wa.me/5585992729289?text=Ol%C3%A1%20Tereza%2C%20vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20a%20sess%C3%A3o%20de%20diagn%C3%B3stico.'
 
 const faqs = [
   {
@@ -29,69 +37,247 @@ const faqs = [
   },
 ]
 
-function FaqItem({ faq, isOpen, onToggle }: { faq: typeof faqs[0]; isOpen: boolean; onToggle: () => void }) {
-  return (
-    <div className="border-b border-text-main/10">
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between py-6 text-left group cursor-pointer"
+const AccordionItem = ({
+  faq,
+  isOpen,
+  onToggle,
+}: {
+  faq: (typeof faqs)[0]
+  isOpen: boolean
+  onToggle: () => void
+}) => (
+  <div
+    style={{
+      borderBottom: '1px solid rgba(26,92,107,0.12)',
+    }}
+  >
+    <button
+      onClick={onToggle}
+      style={{
+        width: '100%',
+        textAlign: 'left',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '1.25rem 0',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        gap: '1rem',
+      }}
+    >
+      <span
+        style={{
+          fontFamily: 'Fraunces, serif',
+          fontSize: '1.05rem',
+          fontWeight: 600,
+          color: '#1C2B35',
+          opacity: 0.9,
+          lineHeight: 1.4,
+          flex: 1,
+        }}
       >
-        <span className="font-display font-semibold text-heading text-lg pr-4">{faq.q}</span>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="flex-shrink-0 text-primary"
+        {faq.q}
+      </span>
+      <motion.span
+        animate={{ rotate: isOpen ? 45 : 0 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        style={{
+          color: '#B5813A',
+          fontSize: '1.25rem',
+          fontWeight: 300,
+          flexShrink: 0,
+          marginTop: '0.125rem',
+          display: 'inline-block',
+        }}
+      >
+        +
+      </motion.span>
+    </button>
+
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          style={{ overflow: 'hidden' }}
         >
-          <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M5 8l5 5 5-5" />
-          </svg>
-        </motion.span>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="overflow-hidden"
+          <p
+            style={{
+              fontFamily: 'Fraunces, serif',
+              fontSize: '0.95rem',
+              fontWeight: 300,
+              fontStyle: 'italic',
+              color: '#374149',
+              opacity: 0.7,
+              lineHeight: 1.85,
+              paddingBottom: '1.25rem',
+            }}
           >
-            <p className="text-text-main text-base leading-relaxed pb-6">
-              {faq.a}
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
+            {faq.a}
+          </p>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+)
 
-export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+export const FAQ = () => {
+  const [openIdx, setOpenIdx] = useState<number | null>(null)
 
   return (
-    <section className="section-padding" style={{ background: '#F9F6F2' }}>
-      <div className="container-ultra max-w-2xl">
-        <FadeIn>
-          <h2 className="font-display text-heading font-semibold text-3xl md:text-[2.5rem] md:leading-[1.2] text-center mb-14">
-            Perguntas frequentes
-          </h2>
-        </FadeIn>
-
-        <FadeIn delay={0.1}>
-          <div>
-            {faqs.map((faq, i) => (
-              <FaqItem
-                key={i}
-                faq={faq}
-                isOpen={openIndex === i}
-                onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-              />
-            ))}
+    <section
+      id="faq"
+      style={{ backgroundColor: '#F9F6F2' }}
+      className="section-padding-lg"
+    >
+      <div className="container-ultra">
+        {/* Header */}
+        <FadeIn direction="up" delay={0}>
+          <div style={{ textAlign: 'center', marginBottom: '1rem' }}>
+            <span
+              className="eyebrow-ultra"
+              style={{ color: '#B5813A', display: 'block', marginBottom: '1rem' }}
+            >
+              PERGUNTAS FREQUENTES
+            </span>
+            <div
+              className="circuit-divider"
+              style={{ maxWidth: '300px', margin: '0 auto 3rem' }}
+            >
+              <div className="circuit-node" />
+              <div className="circuit-node" />
+              <div className="circuit-node" />
+            </div>
           </div>
         </FadeIn>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.6fr',
+            gap: '5rem',
+            alignItems: 'start',
+          }}
+          className="faq-grid"
+        >
+          {/* Sticky sidebar */}
+          <FadeIn direction="left" delay={0.1}>
+            <div style={{ position: 'sticky', top: '8rem' }}>
+              <h2
+                style={{
+                  fontFamily: 'Fraunces, serif',
+                  fontSize: 'clamp(1.5rem, 2.5vw, 2.1rem)',
+                  fontWeight: 600,
+                  color: '#1C2B35',
+                  lineHeight: 1.25,
+                  marginBottom: '1.25rem',
+                }}
+              >
+                Perguntas{' '}
+                <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
+                  frequentes
+                </em>
+              </h2>
+              <div
+                className="circuit-divider"
+                style={{ maxWidth: '160px', marginBottom: '1.25rem' }}
+              >
+                <div className="circuit-node" />
+                <div className="circuit-node" />
+                <div className="circuit-node" />
+              </div>
+              <p
+                style={{
+                  fontFamily: 'Fraunces, serif',
+                  fontSize: '0.95rem',
+                  fontStyle: 'italic',
+                  fontWeight: 300,
+                  color: '#374149',
+                  opacity: 0.6,
+                  lineHeight: 1.8,
+                  marginBottom: '2rem',
+                }}
+              >
+                Se você chegou até aqui, algo dentro de você reconheceu que precisa de mais do que o que está tendo.
+              </p>
+
+              {/* CTA intermediário */}
+              <div
+                style={{
+                  backgroundColor: 'rgba(26,92,107,0.06)',
+                  border: '1px solid rgba(26,92,107,0.15)',
+                  borderRadius: '4px 16px 4px 16px',
+                  padding: '1.5rem',
+                }}
+              >
+                <p
+                  style={{
+                    fontFamily: 'Lato, sans-serif',
+                    fontSize: '0.85rem',
+                    color: '#374149',
+                    opacity: 0.7,
+                    lineHeight: 1.7,
+                    marginBottom: '1rem',
+                  }}
+                >
+                  A próxima conversa é só entre você e Tereza. Sem compromisso.
+                </p>
+                <motion.a
+                  href={WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-shimmer-light"
+                  style={{
+                    display: 'block',
+                    width: '100%',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '4px 10px 4px 10px',
+                    fontFamily: 'Lato, sans-serif',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    textDecoration: 'none',
+                    textAlign: 'center',
+                  }}
+                  whileHover={{ backgroundColor: 'rgba(26,92,107,0.06)', scale: 1.02 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  Falar com a Tereza
+                </motion.a>
+              </div>
+            </div>
+          </FadeIn>
+
+          {/* Accordion */}
+          <FadeIn direction="up" delay={0.15}>
+            <div>
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  faq={faq}
+                  isOpen={openIdx === i}
+                  onToggle={() => setOpenIdx(openIdx === i ? null : i)}
+                />
+              ))}
+            </div>
+          </FadeIn>
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .faq-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .faq-grid > div:first-child {
+            position: static !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

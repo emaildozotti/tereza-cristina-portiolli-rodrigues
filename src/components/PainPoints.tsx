@@ -1,65 +1,200 @@
+// DECISÃO CRIATIVA: Fundo Petróleo Meridiano com sticky sidebar — o título fica
+// ancorado enquanto as dores rolam, criando tensão narrativa. Numerais caramelo
+// funcionam como alarmes numerados do sistema. Cada card com border-radius
+// assimétrico e hover que acende a borda em caramelo (como um disjuntor ativando).
+// Hachura diagonal reforça textura científica. Circuit dividers top/bottom.
 import { FadeIn } from './FadeIn'
 
 const pains = [
   {
-    num: '01',
-    label: 'Ansiedade',
-    quote: 'Meu peito aperta do nada. Minha cabeça nunca desliga. Acordo já cansada sem saber por quê.',
+    n: '01',
+    text: 'Meu peito aperta do nada. Minha cabeça nunca desliga. Acordo já cansada sem saber por quê.',
   },
   {
-    num: '02',
-    label: 'Burnout',
-    quote: 'Perdi a energia pra tudo. Trabalho me consome. Durmo, mas não descanso.',
+    n: '02',
+    text: 'Perdi a energia pra tudo. Trabalho me consome. Durmo, mas não descanso.',
   },
   {
-    num: '03',
-    label: 'Dores Psicossomáticas',
-    quote: 'Meu corpo dói e nenhum exame acha nada. O médico diz que estou bem. Mas eu sei que não estou.',
+    n: '03',
+    text: 'Meu corpo dói e nenhum exame acha nada. O médico diz que estou bem. Mas eu sei que não estou.',
   },
   {
-    num: '04',
-    label: 'Dependência Silenciosa',
-    quote: 'Tomo remédio há anos e tenho vergonha de admitir que não melhorei de verdade. Só aprendi a funcionar dopada.',
+    n: '04',
+    text: 'Tomo remédio há anos e tenho vergonha de admitir que não melhorei de verdade. Só aprendi a funcionar dopada.',
   },
 ]
 
-export default function PainPoints() {
+export const PainPoints = () => {
   return (
-    <section id="pain-points" className="section-padding-lg" style={{ background: '#F3EDE4' }}>
+    <section
+      id="pain-points"
+      style={{
+        backgroundColor: '#1A5C6B',
+        backgroundImage:
+          'repeating-linear-gradient(-45deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 12px)',
+      }}
+      className="section-padding-lg"
+    >
       <div className="container-ultra">
-        <FadeIn>
-          <p className="text-center text-text-main/60 text-sm tracking-widest uppercase mb-6">
-            Mas antes de continuar, você precisa reconhecer algo.
-          </p>
-          <h2 className="font-display text-heading font-semibold text-3xl md:text-[2.5rem] md:leading-[1.2] text-center mb-16">
-            Você reconhece alguma dessas <span className="text-primary">situações</span>?
-          </h2>
+        {/* Circuit divider top */}
+        <FadeIn direction="up" delay={0}>
+          <div className="circuit-divider" style={{ marginBottom: '3rem' }}>
+            <div className="circuit-node" />
+            <div className="circuit-node" />
+            <div className="circuit-node" />
+          </div>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-6">
-          {pains.map((pain, i) => (
-            <FadeIn key={pain.num} delay={i * 0.1}>
-              <div className="relative bg-off-white rounded-[1rem] p-10 shadow-[0_8px_32px_rgba(28,43,53,0.10),0_2px_8px_rgba(28,43,53,0.06)]">
-                <span className="absolute top-4 right-6 font-display text-6xl font-bold text-primary/10 select-none">
-                  {pain.num}
-                </span>
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-secondary mb-3 block">
-                  {pain.label}
-                </span>
-                <p className="font-sub italic text-text-main text-base leading-relaxed">
-                  "{pain.quote}"
-                </p>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.4fr',
+            gap: '5rem',
+            alignItems: 'start',
+          }}
+          className="pain-grid"
+        >
+          {/* Sticky sidebar */}
+          <FadeIn direction="left" delay={0.1}>
+            <div style={{ position: 'sticky', top: '8rem' }}>
+              <span className="eyebrow-ultra" style={{ color: '#B5813A', opacity: 0.8, display: 'block', marginBottom: '1.25rem' }}>
+                Você reconhece?
+              </span>
+              <h2
+                style={{
+                  fontFamily: 'Fraunces, serif',
+                  fontSize: 'clamp(1.75rem, 3vw, 2.5rem)',
+                  fontWeight: 600,
+                  color: '#F9F6F2',
+                  lineHeight: 1.2,
+                  marginBottom: '1.5rem',
+                }}
+              >
+                Você reconhece alguma dessas{' '}
+                <em style={{ color: '#B5813A', fontStyle: 'italic' }}>
+                  situações?
+                </em>
+              </h2>
+              <div className="circuit-divider" style={{ maxWidth: '200px', marginBottom: '1.5rem' }}>
+                <div className="circuit-node" />
+                <div className="circuit-node" />
+                <div className="circuit-node" />
               </div>
+              <p
+                style={{
+                  fontFamily: 'Fraunces, serif',
+                  fontSize: '0.95rem',
+                  fontWeight: 300,
+                  color: '#F9F6F2',
+                  opacity: 0.6,
+                  fontStyle: 'italic',
+                  lineHeight: 1.8,
+                }}
+              >
+                Mas antes de continuar, você precisa reconhecer algo.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Pain cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            {pains.map((pain, i) => (
+              <FadeIn key={pain.n} direction="up" delay={0.1 + i * 0.12}>
+                <div
+                  style={{
+                    backgroundColor: 'rgba(28, 43, 53, 0.35)',
+                    border: '1px solid rgba(249, 246, 242, 0.1)',
+                    borderRadius: '16px 4px 16px 4px',
+                    padding: '1.75rem',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'border-color 0.3s ease, background-color 0.3s ease',
+                  }}
+                  onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLDivElement
+                    el.style.borderColor = 'rgba(181,129,58,0.3)'
+                    el.style.backgroundColor = 'rgba(28, 43, 53, 0.5)'
+                  }}
+                  onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLDivElement
+                    el.style.borderColor = 'rgba(249, 246, 242, 0.1)'
+                    el.style.backgroundColor = 'rgba(28, 43, 53, 0.35)'
+                  }}
+                >
+                  {/* Number */}
+                  <span
+                    style={{
+                      fontFamily: 'Fraunces, serif',
+                      fontSize: '0.7rem',
+                      fontWeight: 400,
+                      color: '#B5813A',
+                      opacity: 0.9,
+                      letterSpacing: '0.1em',
+                      display: 'block',
+                      marginBottom: '0.75rem',
+                    }}
+                  >
+                    {pain.n}
+                  </span>
+                  <p
+                    style={{
+                      fontFamily: 'Fraunces, serif',
+                      fontSize: '1rem',
+                      fontWeight: 300,
+                      fontStyle: 'italic',
+                      color: '#F9F6F2',
+                      opacity: 0.85,
+                      lineHeight: 1.75,
+                    }}
+                  >
+                    {pain.text}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+
+            {/* Transition pull */}
+            <FadeIn direction="up" delay={0.6}>
+              <p
+                style={{
+                  fontFamily: 'Fraunces, serif',
+                  fontSize: '1rem',
+                  fontStyle: 'italic',
+                  fontWeight: 300,
+                  color: '#F9F6F2',
+                  opacity: 0.6,
+                  paddingTop: '0.5rem',
+                  paddingLeft: '0.25rem',
+                  lineHeight: 1.8,
+                }}
+              >
+                Se você se reconheceu em alguma dessas frases, o que você vai ler a seguir foi feito pra você.
+              </p>
             </FadeIn>
-          ))}
+          </div>
         </div>
 
-        <FadeIn delay={0.4}>
-          <p className="text-center mt-14 font-sub italic text-text-main/70 text-base max-w-md mx-auto">
-            Se você se reconheceu em alguma dessas frases, o que você vai ler a seguir foi feito pra você.
-          </p>
+        {/* Circuit divider bottom */}
+        <FadeIn direction="up" delay={0.7}>
+          <div className="circuit-divider" style={{ marginTop: '3rem' }}>
+            <div className="circuit-node" />
+            <div className="circuit-node" />
+            <div className="circuit-node" />
+          </div>
         </FadeIn>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .pain-grid {
+            grid-template-columns: 1fr !important;
+            gap: 2.5rem !important;
+          }
+          .pain-grid > div:first-child {
+            position: static !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }
