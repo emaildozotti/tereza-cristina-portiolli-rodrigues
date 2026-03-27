@@ -204,9 +204,9 @@ export const Hero = () => {
                     letterSpacing: '-0.01em',
                   }}
                 >
-                  Seus disjuntores emocionais caíram.{' '}
+                  Seu corpo tem um sistema de cura que nenhum remédio ativa.{' '}
                   <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
-                    Eu sei religar.
+                    Eu sei ativar.
                   </em>
                 </h1>
               </FadeIn>

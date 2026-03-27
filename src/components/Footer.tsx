@@ -76,9 +76,9 @@ export const Footer = () => {
                 margin: '0 auto 1.5rem',
               }}
             >
-              Seus disjuntores estão prontos.{' '}
+              Seu sistema de cura está pronto.{' '}
               <em style={{ color: '#B5813A', fontStyle: 'italic' }}>
-                Falta religar.
+                Falta ativar.
               </em>
             </h2>
           </FadeIn>
