@@ -8,19 +8,19 @@ import { FadeIn } from './FadeIn'
 const pains = [
   {
     n: '01',
-    text: 'Meu peito aperta do nada. Minha cabeça nunca desliga. Acordo já cansada sem saber por quê.',
+    text: 'Você está no trânsito, 7h da manhã. O peito aperta. A saliva não desce. O ar não entra direito. Você segura o volante com força e pensa: "Será que estou tendo um infarto ou é minha cabeça de novo?" Chega no trabalho, ninguém percebe. Você sorri. Mas por dentro o alarme não desligou.',
   },
   {
     n: '02',
-    text: 'Perdi a energia pra tudo. Trabalho me consome. Durmo, mas não descanso.',
+    text: 'Fim de semana. Dois dias "livres". Você dorme 10 horas e acorda mais cansada do que quando deitou. Seu corpo pesa como se tivesse trabalhado a noite inteira dormindo. Olha pra casa, pros filhos, pra lista de coisas. E sente uma tristeza muda que não tem nome. Não é preguiça. Você sabe disso. Mas não consegue explicar pra ninguém.',
   },
   {
     n: '03',
-    text: 'Meu corpo dói e nenhum exame acha nada. O médico diz que estou bem. Mas eu sei que não estou.',
+    text: 'Você já fez exame de sangue, ressonância, ultrassom, eletro. Tudo normal. O médico olha pra você com aquele sorriso educado e diz: "Seus exames estão ótimos." Mas você sabe que não está. Porque dói. Dói no estômago, na lombar, na nuca. Dói sem explicação. E dói mais quando alguém diz que é "da sua cabeça".',
   },
   {
     n: '04',
-    text: 'Tomo remédio há anos e tenho vergonha de admitir que não melhorei de verdade. Só aprendi a funcionar dopada.',
+    text: 'Você abre a gaveta do banheiro. Olha pras caixas de remédio. Duas, três, quatro. Toma há anos. E sabe, no fundo, que não melhorou de verdade. Só aprendeu a funcionar dopada. Vai no médico, ele renova a receita, aumenta a dose. E você não tem coragem de dizer pra ninguém: "Eu tomo tudo isso e continuo me sentindo um lixo por dentro." Essa vergonha, você carrega sozinha.',
   },
 ]
 
@@ -70,9 +70,9 @@ export const PainPoints = () => {
                   marginBottom: '1.5rem',
                 }}
               >
-                Você reconhece alguma dessas{' '}
+                Isso acontece{' '}
                 <em style={{ color: '#B5813A', fontStyle: 'italic' }}>
-                  situações?
+                  com você?
                 </em>
               </h2>
               <div className="circuit-divider" style={{ maxWidth: '200px', marginBottom: '1.5rem' }}>
@@ -91,7 +91,7 @@ export const PainPoints = () => {
                   lineHeight: 1.8,
                 }}
               >
-                Mas antes de continuar, você precisa reconhecer algo.
+                Antes de continuar, preciso te perguntar uma coisa.
               </p>
             </div>
           </FadeIn>
@@ -168,7 +168,7 @@ export const PainPoints = () => {
                   lineHeight: 1.8,
                 }}
               >
-                Se você se reconheceu em alguma dessas frases, o que você vai ler a seguir foi feito pra você.
+                Se alguma dessas cenas fez seu estômago apertar, o que vem a seguir foi escrito pra você.
               </p>
             </FadeIn>
           </div>

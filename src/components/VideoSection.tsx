@@ -56,7 +56,7 @@ export const VideoSection = () => {
               lineHeight: 1.85,
             }}
           >
-            Em menos de 3 minutos, Tereza explica por que o seu corpo reage diferente com o TFT, e o que acontece nos seus meridianos durante uma sessão.
+            Em menos de 3 minutos, Tereza explica o que acontece nos seus meridianos quando a ansiedade dispara. E por que o remédio sozinho não consegue chegar nessa raiz.
           </p>
         </FadeIn>
 
@@ -224,7 +224,7 @@ export const VideoSection = () => {
                 lineHeight: 1.8,
               }}
             >
-              "Seu corpo não precisa acreditar para reagir. Precisa de ativação."
+              "Seu corpo não precisa acreditar. Precisa de ativação."
             </p>
           </div>
         </FadeIn>

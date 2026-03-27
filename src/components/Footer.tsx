@@ -58,7 +58,7 @@ export const Footer = () => {
               className="eyebrow-ultra"
               style={{ display: 'block', marginBottom: '1.5rem', opacity: 0.8 }}
             >
-              Dar o próximo passo
+              Mas se continuar adiando, o alarme continua ligado
             </span>
           </FadeIn>
 
@@ -110,7 +110,7 @@ export const Footer = () => {
                 lineHeight: 1.85,
               }}
             >
-              Esse reconhecimento importa. A próxima conversa é só entre você e Tereza. Sem compromisso. Sem pressão. Só para entender se faz sentido caminhar juntas.
+              Você não precisa resolver tudo hoje. Não precisa ter certeza. Não precisa "estar pronta". A próxima conversa é entre você e Tereza. Só pra entender se faz sentido. Se fizer, você vai sentir. Se não fizer, você não perde nada.
             </p>
           </FadeIn>
 
@@ -137,7 +137,7 @@ export const Footer = () => {
               whileHover={{ backgroundColor: '#0F3D48', scale: 1.02 }}
               whileTap={{ scale: 0.97 }}
             >
-              Agendar sessão de diagnóstico energético
+              Falar com Tereza no WhatsApp
             </motion.a>
           </FadeIn>
 

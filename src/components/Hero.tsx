@@ -188,7 +188,7 @@ export const Hero = () => {
               {/* Callout eyebrow */}
               <FadeIn direction="left" delay={0}>
                 <span className="eyebrow-ultra" style={{ opacity: 0.8 }}>
-                  Para quem está exausta de remédio e sem melhora real
+                  Exausta de remédio sem resultado real
                 </span>
               </FadeIn>
 
@@ -204,11 +204,10 @@ export const Hero = () => {
                     letterSpacing: '-0.01em',
                   }}
                 >
-                  O seu corpo tem os{' '}
+                  Seus disjuntores emocionais caíram.{' '}
                   <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
-                    disjuntores certos
+                    Eu sei religar.
                   </em>
-                  . Só precisa religar.
                 </h1>
               </FadeIn>
 
@@ -234,7 +233,7 @@ export const Hero = () => {
                     lineHeight: 1.7,
                   }}
                 >
-                  TFT: a abordagem que trabalha nos meridianos do corpo para desativar os alarmes da ansiedade, do burnout e da dor que nenhum exame explica. Com base científica, resultado mensurável e acolhimento de quem entende cada molécula do remédio que você toma.
+                  Sou farmacêutica. Entendo cada molécula do remédio que você toma. E escolhi te mostrar que seu corpo sabe se curar, quando os meridianos certos são ativados.
                 </p>
               </FadeIn>
 
@@ -262,7 +261,7 @@ export const Hero = () => {
                     whileHover={{ backgroundColor: '#0F3D48', scale: 1.02 }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    Quero agendar minha sessão de diagnóstico
+                    Quero falar com Tereza
                   </motion.a>
 
                   <motion.button

@@ -11,17 +11,17 @@ const steps = [
   {
     n: '01',
     title: 'Sessão de Diagnóstico Energético',
-    body: 'Você conta o que está vivendo. Tereza mapeia os alarmes ativos no seu sistema. Medimos o SUD juntas: qual o seu nível de sofrimento hoje, de 0 a 10.',
+    body: 'Você conta o que está vivendo. Sem pressa, sem julgamento. Tereza mapeia os alarmes ativos no seu sistema. Medimos o SUD juntas: qual o seu nível de sofrimento hoje, de 0 a 10. Esse número é o ponto de partida.',
   },
   {
     n: '02',
     title: 'Ativação dos Meridianos',
-    body: 'Com o protocolo TFT, Tereza orienta os toques nos pontos específicos do seu corpo. Você faz em si mesma, guiada com precisão. Não precisa de presença física. O reequilíbrio acontece.',
+    body: 'Com o protocolo TFT, Tereza orienta os toques nos pontos específicos do seu corpo. Você faz em si mesma, guiada com precisão. Não precisa de contato físico. Não precisa estar no consultório. O reequilíbrio acontece porque o corpo responde, independente de onde você esteja.',
   },
   {
     n: '03',
     title: 'Medição e Continuidade',
-    body: 'Medimos o SUD novamente ao final. Você sente a diferença no corpo antes de sair da sessão. Um plano de continuidade é desenhado para consolidar o reequilíbrio.',
+    body: 'Medimos o SUD de novo. Você sente a diferença antes de sair da sessão. Não é "volte semana que vem e vamos ver". É alívio verificável, no mesmo dia. E um plano de continuidade para consolidar o reequilíbrio nas camadas mais profundas.',
   },
 ]
 
@@ -209,7 +209,7 @@ export const HowItWorks = () => {
                 lineHeight: 1.8,
               }}
             >
-              E o que acontece quando os disjuntores religam? Outras pessoas já sentiram.
+              Mas não acredite só em mim. Escute quem já sentiu no corpo.
             </p>
           </div>
         </FadeIn>

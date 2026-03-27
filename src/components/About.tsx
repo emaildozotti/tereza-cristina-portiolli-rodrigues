@@ -157,9 +157,9 @@ export const About = () => {
                   lineHeight: 1.2,
                 }}
               >
-                A farmacêutica que{' '}
+                A farmacêutica que precisou{' '}
                 <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
-                  expandiu a ciência
+                  ir além da farmácia
                 </em>
               </h2>
 
@@ -180,7 +180,11 @@ export const About = () => {
                     lineHeight: 1.85,
                   }}
                 >
-                  Por anos, Tereza viveu dentro da lógica da medicina tradicional. Cada fórmula, cada mecanismo de ação, cada efeito colateral. Entendia os remédios melhor do que a maioria.
+                  Por anos, Tereza viveu dentro da lógica da medicina tradicional. Fórmulas, mecanismos de ação, interações medicamentosas. Sabia de cor como cada substância age no sistema nervoso.
+
+                  Mas tinha uma cena que se repetia. A paciente voltava na farmácia. Mesma receita. Às vezes dose maior. Mesmo olhar cansado. E Tereza pensava: "Essa mulher toma tudo certo. Por que continua sofrendo igual?"
+
+                  A resposta não estava no remédio.
                 </p>
               </div>
 
@@ -203,7 +207,7 @@ export const About = () => {
                     lineHeight: 1.85,
                   }}
                 >
-                  "Por que tantas pessoas tomam remédio há anos e continuam sofrendo igual?"
+                  "A resposta estava nos meridianos. Na ativação neurológica. Na raiz emocional que a medicação não alcança."
                 </p>
               </blockquote>
 
@@ -224,7 +228,9 @@ export const About = () => {
                     lineHeight: 1.85,
                   }}
                 >
-                  A resposta não estava na farmacologia. Estava nos meridianos. Na ativação neurológica. Na raiz emocional que o medicamento não alcança. Tereza foi fundo. Estudou acupuntura, reconhecida pelo SUS. Aprofundou no TFT. Aprendeu a medir o sofrimento e a reduzi-lo sessão a sessão.
+                  Tereza foi fundo. Estudou acupuntura, reconhecida pelo SUS. Aprofundou no TFT. Aprendeu a medir o sofrimento (SUD) e a reduzi-lo, sessão a sessão. Viu números caindo. Viu rostos mudando.
+
+                  E entendeu que a ciência que ela já dominava não estava errada. Estava incompleta.
                 </p>
               </div>
 
@@ -245,7 +251,9 @@ export const About = () => {
                     lineHeight: 1.85,
                   }}
                 >
-                  Tereza trabalha com quem está exausta de remédio sem resultado real. Com quem acorda já destruída. Com quem sente que há algo por dentro que a medicina ainda não nomeou. Ela não nega a ciência. Ela a expande. Com a solidez de quem estudou cada molécula. E a suavidade de quem aprendeu a cuidar da raiz.
+                  Tereza trabalha com quem já tentou de tudo. Com quem acorda destruída e não sabe por quê. Com quem sente dores que nenhum exame encontra.
+
+                  Ela não nega a ciência. Ela a expande. Com a solidez de quem entende cada molécula. E a suavidade de quem aprendeu a cuidar da causa.
                 </p>
               </div>
 
@@ -295,7 +303,7 @@ export const About = () => {
                   marginTop: '0.5rem',
                 }}
               >
-                Agora, como funciona na prática?
+                E como é, na prática, religar esses disjuntores?
               </p>
             </div>
           </FadeIn>

@@ -10,19 +10,19 @@ const pillars = [
   {
     numeral: 'I',
     title: 'Acupuntura sem agulhas',
-    body: 'O TFT trabalha nos mesmos meridianos que a acupuntura, reconhecida pelo SUS. Com toques precisos em pontos específicos, o sistema nervoso recebe o sinal para desativar a resposta de alarme. Você faz no próprio corpo. Sob orientação. Online ou presencial.',
+    body: 'Os mesmos meridianos que a acupuntura usa (reconhecida pelo SUS) podem ser ativados sem nenhuma agulha. Com toques precisos em pontos específicos, o seu sistema nervoso recebe um sinal claro: "pode desligar o alarme." Você faz no seu próprio corpo, guiada por Tereza. Online ou presencial.\n\nO que isso significa pra você: aquela pressão no peito que não sai? Ela tem um endereço no seu corpo. E pode ser desativada.',
     reverse: false,
   },
   {
     numeral: 'II',
-    title: 'Protocolo SUD mensurável',
-    body: 'Antes de cada sessão, medimos o SUD: seu nível subjetivo de sofrimento. Depois da sessão, medimos de novo. Os números mudam. O alívio é verificável. Não tem como inventar.',
+    title: 'Protocolo SUD, seu alívio em números',
+    body: 'Antes da sessão, medimos o SUD: o seu nível subjetivo de sofrimento, de 0 a 10. Depois da sessão, medimos de novo. Você vê o número cair. Sente no corpo. Não precisa acreditar na minha palavra. O próprio corpo confirma.\n\nO que isso significa pra você: nada de "confia no processo" sem evidência. Aqui, o resultado aparece antes de você sair da sessão.',
     reverse: true,
   },
   {
     numeral: 'III',
     title: 'Método cumulativo e irreversível',
-    body: 'Cada sessão desativa uma camada de sofrimento guardada no sistema energético. Emoções tratadas não voltam da mesma forma. O reequilíbrio se acumula. O alívio permanece.',
+    body: 'Cada sessão desativa uma camada de sofrimento guardada no seu sistema energético. Emoções que foram tratadas não voltam da mesma forma. O reequilíbrio se acumula, sessão a sessão. O alívio permanece.\n\nO que isso significa pra você: não é uma muleta que você precisa usar pra sempre. É uma limpeza que, uma vez feita, não precisa ser refeita.',
     reverse: false,
   },
 ]
@@ -58,9 +58,9 @@ export const Method = () => {
                 marginBottom: '0.75rem',
               }}
             >
-              TFT: a ciência do reequilíbrio que{' '}
+              Por que o TFT faz o que o remédio{' '}
               <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
-                seu corpo já conhece
+                sozinho não consegue
               </em>
             </h2>
           </div>
@@ -85,7 +85,7 @@ export const Method = () => {
                 lineHeight: 1.85,
               }}
             >
-              Não é fé. Não é sugestão. É ativação neurológica com protocolo mensurável.
+              Não é fé. Não é sugestão. É o seu próprio sistema nervoso respondendo a toques precisos.
             </p>
           </div>
         </FadeIn>
@@ -274,7 +274,9 @@ export const Method = () => {
                 lineHeight: 1.85,
               }}
             >
-              O TFT identifica e corrige a Reversão Psicológica, o bloqueio inconsciente que impede o corpo de aceitar o alívio. Quando esse bloqueio é desativado, o organismo volta a responder ao processo de cura.
+              Existe um bloqueio que o TFT identifica e corrige: a Reversão Psicológica. É quando o seu corpo, de forma inconsciente, impede o próprio alívio. Quando esse bloqueio é desativado, o organismo volta a responder ao processo de cura.
+
+              O que isso significa pra você: se você já tentou de tudo e nada funcionou, pode ser que o problema não fosse o método. Era o seu corpo bloqueando a saída.
             </p>
           </div>
         </FadeIn>
@@ -338,7 +340,7 @@ export const Method = () => {
                 marginTop: '1rem',
               }}
             >
-              O TFT é complementar à medicina. Não concorrente.
+              O TFT é complementar à medicina. Não concorrente. Tereza entende isso melhor do que ninguém, porque viveu dos dois lados.
             </p>
           </div>
         </FadeIn>
@@ -358,7 +360,7 @@ export const Method = () => {
               lineHeight: 1.8,
             }}
           >
-            Quer entender quem é a pessoa por trás desse método?
+            Mas quem é essa mulher que escolheu sair da farmácia pra religar os disjuntores dos outros?
           </p>
         </FadeIn>
       </div>

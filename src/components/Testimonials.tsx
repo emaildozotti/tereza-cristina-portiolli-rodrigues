@@ -91,9 +91,9 @@ export const Testimonials = () => {
                 lineHeight: 1.2,
               }}
             >
-              Resultados que o corpo{' '}
+              Quem sentiu,{' '}
               <em style={{ color: '#B5813A', fontStyle: 'italic' }}>
-                confirma
+                sabe
               </em>
             </h2>
             <div
@@ -275,7 +275,7 @@ export const Testimonials = () => {
                 lineHeight: 1.8,
               }}
             >
-              Mas talvez uma parte de você ainda tenha dúvidas. Normal.
+              Se uma parte de você ainda tem dúvidas, leia isso antes de decidir.
             </p>
           </div>
         </FadeIn>

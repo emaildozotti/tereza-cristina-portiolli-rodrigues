@@ -12,28 +12,28 @@ const WA_LINK = 'https://wa.me/5585992729289?text=Ol%C3%A1%20Tereza%2C%20vi%20su
 
 const faqs = [
   {
-    q: 'TFT funciona online?',
-    a: 'Sim. O TFT é realizado pelo próprio paciente sob orientação precisa. A ativação dos meridianos acontece no seu próprio corpo. A rede energética não tem fronteiras geográficas. Dezenas de sessões online já produziram resultado mensurável.',
+    q: 'TFT funciona online de verdade?',
+    a: 'Sim. E eu entendo o ceticismo. Eu mesma questionei no início. Mas o TFT é realizado por você, no seu próprio corpo, sob orientação precisa. Os meridianos estão em você, não no consultório. A ativação neurológica acontece independente da distância. Dezenas de sessões online já produziram resultado mensurável pelo protocolo SUD.',
   },
   {
-    q: 'Preciso parar meu tratamento médico para fazer TFT?',
-    a: 'Não. O TFT é complementar, nunca substituto. Tereza tem background farmacêutico e compreende profundamente os tratamentos convencionais. O método trabalha em camadas que a medicação não alcança, sem interferir no que você já faz.',
+    q: 'Preciso parar minha medicação para fazer TFT?',
+    a: 'De jeito nenhum. Tereza é farmacêutica de formação. Ela entende profundamente o que cada medicamento faz no seu corpo. O TFT trabalha em camadas que a medicação não alcança, sem interferir no que você já faz. O objetivo não é tirar o remédio. É cuidar do que o remédio não consegue cuidar.',
   },
   {
-    q: 'Isso entra em conflito com minha fé ou crenças religiosas?',
-    a: 'Não. O TFT trabalha com a rede energética do corpo, a mesma base da acupuntura reconhecida pelo SUS. Não é prática espiritual nem religiosa. É ativação neurológica com protocolo clínico. Você não precisa acreditar em nada. Só precisa fazer os toques.',
+    q: 'Isso entra em conflito com minha fé ou religião?',
+    a: 'Não. Essa é uma dúvida comum e faz todo sentido perguntar. O TFT trabalha com a rede energética do corpo, a mesma base da acupuntura reconhecida pelo SUS. Não é prática espiritual, religiosa ou mística. É ativação neurológica com protocolo clínico. Você não precisa acreditar em nada. Só precisa fazer os toques. O corpo responde sozinho.',
   },
   {
-    q: 'Qual o investimento em uma sessão?',
-    a: 'O valor de uma sessão é compatível com serviços especializados de saúde integrativa. Pense assim: o que você já gastou em remédios, consultas e exames que não chegaram na raiz? Uma sessão de diagnóstico energético é o primeiro passo para entender se o TFT faz sentido pra você. Fale diretamente comigo para saber os valores e formas de pagamento.',
+    q: 'Qual o investimento?',
+    a: 'Pense assim: quanto você já gastou em remédios, consultas, exames, terapias que não chegaram na raiz? Uma sessão de diagnóstico energético é o primeiro passo para entender se o TFT faz sentido pra você. Sem compromisso de continuidade. Fale direto com Tereza para saber valores e formas de pagamento.',
   },
   {
     q: 'Quanto tempo leva para sentir resultado?',
-    a: 'Muitas pessoas sentem alívio já na primeira sessão. O protocolo SUD mede o sofrimento antes e depois: você verifica o resultado no próprio corpo. Para questões mais complexas, o processo é cumulativo e os resultados se aprofundam com o tempo.',
+    a: 'Muitas pessoas sentem alívio já na primeira sessão. Não é promessa de prazo. É o que o protocolo SUD mostra: o nível de sofrimento é medido antes e depois, e você verifica o resultado no próprio corpo, na mesma sessão. Para questões mais profundas e complexas, o processo é cumulativo. Cada sessão limpa uma camada.',
   },
   {
     q: 'Como funciona a primeira sessão?',
-    a: 'A primeira sessão é de diagnóstico e ativação. Você conta o que está vivendo. Medimos o SUD juntas. Aplicamos o protocolo. Você sente a diferença. E saímos com clareza sobre o próximo passo.',
+    a: 'Você chega (online ou presencial), conta o que está vivendo. Sem formulário frio, sem roteiro. Tereza escuta, mapeia os alarmes e mede o SUD com você. Depois, aplica o protocolo. Você sente a diferença. E saímos com clareza sobre o próximo passo. Se fizer sentido pra você, seguimos. Se não, sem pressão.',
   },
 ]
 
@@ -176,9 +176,9 @@ export const FAQ = () => {
                   marginBottom: '1.25rem',
                 }}
               >
-                Perguntas{' '}
+                O que você precisa saber{' '}
                 <em style={{ color: '#1A5C6B', fontStyle: 'italic' }}>
-                  frequentes
+                  antes de dar esse passo
                 </em>
               </h2>
               <div
@@ -201,7 +201,7 @@ export const FAQ = () => {
                   marginBottom: '2rem',
                 }}
               >
-                Se você chegou até aqui, algo dentro de você reconheceu que precisa de mais do que o que está tendo.
+                Você leu até aqui. Isso não é acidente. Alguma coisa nesse texto tocou num lugar que você já conhece. No peito que aperta. Na exaustão que não passa. Na vergonha de admitir que o remédio não resolveu.
               </p>
 
               {/* CTA intermediário */}
@@ -223,7 +223,7 @@ export const FAQ = () => {
                     marginBottom: '1rem',
                   }}
                 >
-                  A próxima conversa é só entre você e Tereza. Sem compromisso.
+                  Você não precisa resolver tudo hoje. Não precisa ter certeza. Não precisa "estar pronta". A próxima conversa é entre você e Tereza. Só pra entender se faz sentido.
                 </p>
                 <motion.a
                   href={WA_LINK}
