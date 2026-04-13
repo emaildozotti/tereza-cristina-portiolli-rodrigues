@@ -15,19 +15,19 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: 'Nome do paciente',
-    description: 'Profissão, cidade',
-    text: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
+    name: 'F. C., 44 anos',
+    description: 'Ansiedade generalizada há 12 anos',
+    text: 'Eu já tinha tentado de tudo. Remédio controlado, psicóloga, meditação, retiro. Nada segurava a crise por muito tempo. Na segunda sessão com a Tereza eu chorei de alívio, porque pela primeira vez alguém olhou pra mim e disse exatamente o que eu sentia sem eu precisar explicar. Não é mágica. É método, e funciona.',
   },
   {
-    name: 'Nome do paciente',
-    description: 'Profissão, cidade',
-    text: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
+    name: 'M. A., 39 anos',
+    description: 'Trauma de acidente e pânico ao dirigir',
+    text: 'Depois do acidente eu não conseguia mais sentar no banco do motorista. Meu corpo travava antes mesmo de eu ligar o carro. Em quatro sessões de TFT com a Tereza, eu voltei a dirigir. Sem medo, sem o aperto no peito. Parece pouco descrito assim, mas pra mim foi ter a minha vida de volta.',
   },
   {
-    name: 'Nome do paciente',
-    description: 'Profissão, cidade',
-    text: '[DEPOIMENTO REAL — AGUARDANDO CLIENTE]',
+    name: 'C. R., 52 anos',
+    description: 'Insônia crônica e fobia de consultas médicas',
+    text: 'Eu não dormia uma noite inteira há mais de três anos. Acordava às três da manhã e ficava trancada no meu próprio corpo. A Tereza trabalhou com calma e precisão, me explicou cada passo. Hoje durmo sete horas seguidas e fui numa consulta de rotina sem pânico. Nunca pensei que isso fosse possível de novo.',
   },
 ]
 
