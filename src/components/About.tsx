@@ -6,46 +6,6 @@
 // Narrativa ANTES -> VIRADA -> HOJE estrutura a jornada de Tereza.
 import { FadeIn } from './FadeIn'
 
-const PhotoFallback = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      background: 'linear-gradient(135deg, #1A5C6B 0%, #0F3D48 60%, #1C2B35 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '0.5rem',
-    }}
-  >
-    <span
-      style={{
-        fontFamily: 'Fraunces, serif',
-        fontSize: '4rem',
-        color: '#F9F6F2',
-        opacity: 0.9,
-        lineHeight: 1,
-      }}
-    >
-      TC
-    </span>
-    <span
-      style={{
-        fontFamily: 'Lato, sans-serif',
-        fontSize: '0.65rem',
-        fontWeight: 700,
-        letterSpacing: '0.18em',
-        textTransform: 'uppercase',
-        color: '#B5813A',
-        opacity: 0.7,
-      }}
-    >
-      Tereza Cristina
-    </span>
-  </div>
-)
-
 export const About = () => {
   return (
     <section
@@ -109,7 +69,7 @@ export const About = () => {
                 }}
                 className="client-photo"
               >
-                <PhotoFallback />
+                <img src="/foto-tereza-sobre.jpg" alt="Tereza Cristina Portiolli Rodrigues" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
                 <div className="image-overlay" />
               </div>
 

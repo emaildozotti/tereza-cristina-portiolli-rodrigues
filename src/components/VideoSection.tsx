@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { motion } from 'motion/react'
 import { FadeIn } from './FadeIn'
 
-const VIDEO_ID = 'VIDEO_PLACEHOLDER'
+const VIDEO_ID = 'sU9sjGrEXFM'
 
 export const VideoSection = () => {
   const [playing, setPlaying] = useState(false)

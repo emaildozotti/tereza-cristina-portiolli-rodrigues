@@ -11,46 +11,6 @@ import { FadeIn } from './FadeIn'
 
 const WA_LINK = 'https://wa.me/5585992729289?text=Ol%C3%A1%20Tereza%2C%20vi%20sua%20p%C3%A1gina%20e%20quero%20saber%20mais%20sobre%20a%20sess%C3%A3o%20de%20diagn%C3%B3stico.'
 
-const PhotoFallback = () => (
-  <div
-    style={{
-      width: '100%',
-      height: '100%',
-      background: 'linear-gradient(135deg, #1A5C6B 0%, #0F3D48 50%, #1C2B35 100%)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '0.5rem',
-    }}
-  >
-    <span
-      style={{
-        fontFamily: 'Fraunces, serif',
-        fontSize: '4rem',
-        color: '#F9F6F2',
-        opacity: 0.9,
-        lineHeight: 1,
-        letterSpacing: '-0.02em',
-      }}
-    >
-      TC
-    </span>
-    <span
-      style={{
-        fontFamily: 'Lato, sans-serif',
-        fontSize: '0.65rem',
-        fontWeight: 600,
-        letterSpacing: '0.18em',
-        textTransform: 'uppercase',
-        color: '#B5813A',
-        opacity: 0.7,
-      }}
-    >
-      Tereza Cristina
-    </span>
-  </div>
-)
 
 export const Hero = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -314,7 +274,7 @@ export const Hero = () => {
                   }}
                   className="client-photo"
                 >
-                  <PhotoFallback />
+                  <img src="/foto-tereza.jpg" alt="Tereza Cristina Portiolli Rodrigues" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top', display: 'block' }} />
                   <div className="image-overlay" />
                 </div>
                 {/* Credential badge */}
